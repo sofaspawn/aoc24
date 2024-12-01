@@ -6,7 +6,6 @@ fn main() {
     let mut l1 = Vec::new();
     let mut l2 = Vec::new();
     for line in f.split("\n") {
-        //println!("{:?}",line.split("   ").collect::<Vec<_>>());
         let v = line.split("   ").collect::<Vec<_>>();
         if v.len() > 1 {
             l1.push(v[0]);
