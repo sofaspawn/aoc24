@@ -13,18 +13,12 @@ fn main() {
             l2.push(v[1]);
         }
     }
-    //part1(&mut l1, &mut l2);
+    part1(&mut l1, &mut l2);
     part2(&l1, &l2);
 }
 
 fn part2(l1: &Vec<&str>, l2: &Vec<&str>) {
-    //let mut c1 = HashMap::new();
     let mut c2 = HashMap::new();
-    /*
-    for v in l1 {
-        c1.entry(v).and_modify(|counter| *counter += 1).or_insert(1);
-    }
-    */
     for v in l2 {
         c2.entry(v).and_modify(|counter| *counter += 1).or_insert(1);
     }
@@ -32,10 +26,10 @@ fn part2(l1: &Vec<&str>, l2: &Vec<&str>) {
     for v in l1 {
         ans += v.to_string().parse::<i32>().unwrap() * c2.get(v).unwrap_or(&0);
     }
-    dbg!(ans);
+    println!("part2: {ans}");
 }
 
-fn _part1(l1: &mut Vec<&str>, l2: &mut Vec<&str>) {
+fn part1(l1: &mut Vec<&str>, l2: &mut Vec<&str>) {
     l1.sort();
     l2.sort();
     let mut ans = 0;
@@ -44,5 +38,5 @@ fn _part1(l1: &mut Vec<&str>, l2: &mut Vec<&str>) {
         let fst = l1[i].to_string().parse::<i32>().unwrap();
         ans += (snd - fst).abs();
     }
-    println!("{ans}");
+    println!("part1: {ans}");
 }
