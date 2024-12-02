@@ -6,11 +6,30 @@ fn main() {
     let mut ans = 0;
     for line in f.split('\n') {
         let report: Vec<_> = line.split(' ').collect();
-        if part1(&report) {
+        if !part1(&report) {
+            let valid = part2(&report);
+            if valid {
+                ans += 1;
+            }
+        } else {
             ans += 1;
         }
     }
     dbg!(ans);
+}
+
+fn part2(report: &Vec<&str>) -> bool {
+    let mut nreport = report.clone();
+    let mut valid = false;
+    for i in 0..report.len() {
+        nreport.remove(i);
+        if part1(&nreport) {
+            valid = true;
+            break;
+        }
+        nreport = report.clone();
+    }
+    return valid;
 }
 
 fn part1(report: &Vec<&str>) -> bool {
