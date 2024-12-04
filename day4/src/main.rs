@@ -33,6 +33,7 @@ fn part1(wgrid: &Vec<Vec<char>>) -> i32 {
         for x in 0..wgrid[y].len() {
             let mut idx = 0;
             if wgrid[y][x] == word.chars().nth(idx).unwrap() {
+                idx += 1;
                 for dir in &dirs {
                     let i = dir[0];
                     let j = dir[1];
@@ -42,6 +43,10 @@ fn part1(wgrid: &Vec<Vec<char>>) -> i32 {
                         || x as i32 + i >= wgrid[y].len() as i32
                     {
                         continue;
+                    }
+                    let curr = wgrid[y + j as usize][x + i as usize];
+                    if curr == word.chars().nth(idx).unwrap() {
+                        idx += 1;
                     }
                 }
             }
