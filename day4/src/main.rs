@@ -44,7 +44,8 @@ fn part1(wgrid: &Vec<Vec<char>>) -> i32 {
                     {
                         continue;
                     }
-                    let curr = wgrid[y + j as usize][x + i as usize];
+                    let mut curr = wgrid[y + j as usize][x + i as usize];
+                    let mut curr_dir = dir;
                     if curr == word.chars().nth(idx).unwrap() {
                         idx += 1;
                     }
